@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import ListTable from "./ListTable";
+
 const Table = ({ data }) => {
   const [search, setSearch] = useState("");
 
@@ -67,47 +68,6 @@ const Table = ({ data }) => {
           </table>
         </div>
       </div>
-
-      {/* <div class="overflow-x-auto py-14 px-14">
-        <table class="table w-full">
-          <thead>
-            <tr className="underline underline-offset-8 decoration-secondary-content text-2xl font-bold">
-              <th>Nama</th>
-              <th>Kota</th>
-              <th>Provinsi</th>
-              <th>Tempat Vaksin</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.length
-              ? data.map((item) => (
-                  <List
-                    key={0}
-                    nama={item.nama}
-                    kota={item.kota}
-                    provinsi={item.provinsi}
-                    tempat={item.jenis_fakes}
-                    status={item.status}
-                  />
-                ))
-              : null}
-
-            {data.length
-              ? data.map((item) => (
-                  <List
-                    key={0}
-                    nama={item.nama}
-                    kota={item.kota}
-                    provinsi={item.provinsi}
-                    tempat={item.jenis_fakes}
-                    status={item.status}
-                  />
-                ))
-              : null}
-          </tbody>
-        </table>
-      </div> */}
     </div>
   );
 };
