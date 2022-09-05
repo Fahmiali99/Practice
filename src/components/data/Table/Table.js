@@ -27,6 +27,8 @@ const Table = ({ data }) => {
                 <th>Provinsi</th>
                 <th>Status</th>
                 <th>Status</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
               </tr>
             </thead>
 
@@ -42,7 +44,9 @@ const Table = ({ data }) => {
                   item.jenis_faskes
                     .toLowerCase()
                     .includes(search.toLowerCase()) ||
-                  item.status.toLowerCase().includes(search.toLowerCase())
+                  item.status.toLowerCase().includes(search.toLowerCase()) ||
+                  item.latitude.toLowerCase().includes(search.toLowerCase()) ||
+                  item.longitude.toLowerCase().includes(search.toLowerCase())
                 ) {
                   return item;
                 }
@@ -56,6 +60,8 @@ const Table = ({ data }) => {
                   provinsi={item.provinsi}
                   tempat={item.jenis_faskes}
                   status={item.status}
+                  lat={item.latitude}
+                  long={item.longitude}
                 />
               ))}
           </table>

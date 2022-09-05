@@ -12,7 +12,6 @@ const index = () => {
   const [dataProv, setDataProv] = useState([]);
 
   //   console.log(dataProv);
-
   useEffect(() => {
     axios
       .get(URL_API_VAKSIN)

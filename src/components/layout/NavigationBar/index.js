@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function index() {
   return (
-    <div>
+    <div id="navbar">
       <div className="btm-nav bg-slate-600 z-10 w-screen">
         <Link to="/">
           <button className="text-success">

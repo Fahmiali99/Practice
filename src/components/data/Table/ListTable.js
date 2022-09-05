@@ -1,6 +1,7 @@
 import React from "react";
 
-function List({ nama, kota, provinsi, tempat, status, nomer }) {
+function Listtable({ nama, kota, provinsi, tempat, status, nomer, long, lat }) {
+  // console.log(long);
   return (
     <>
       <tbody>
@@ -10,9 +11,11 @@ function List({ nama, kota, provinsi, tempat, status, nomer }) {
         <td>{provinsi}</td>
         <td>{tempat}</td>
         <td>{status}</td>
+        <td>{lat}</td>
+        <td>{long}</td>
       </tbody>
     </>
   );
 }
 
-export default List;
+export default Listtable;
