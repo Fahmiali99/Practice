@@ -46,7 +46,7 @@ const Table = ({ data, kota }) => {
                     swal({
                       button: false,
                       title: "Not Found",
-                      text: "Provice in your select not available",
+                      text: "The province you selected is not available",
                       icon: "warning",
                     });
                     return item;
