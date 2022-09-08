@@ -40,7 +40,6 @@ const Table = ({ data, kota }) => {
                   } else if (
                     item.provinsi.toLowerCase().includes(kota.toLowerCase())
                   ) {
-                    console.log(true);
                     return item;
                   } else {
                     swal({
