@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import swal from "sweetalert";
 
 import ListTable from "./ListTable";
-
-const Table = ({ data }) => {
+const Table = ({ data, kota }) => {
   const [search, setSearch] = useState("");
 
   return (
@@ -32,39 +32,62 @@ const Table = ({ data }) => {
                 <th>Longitude</th>
               </tr>
             </thead>
-
-            {data
-              // eslint-disable-next-line array-callback-return
-              .filter((item) => {
-                if (search === "") {
-                  return item;
-                } else if (
-                  item.nama.toLowerCase().includes(search.toLowerCase()) ||
-                  item.kota.toLowerCase().includes(search.toLowerCase()) ||
-                  item.provinsi.toLowerCase().includes(search.toLowerCase()) ||
-                  item.jenis_faskes
-                    .toLowerCase()
-                    .includes(search.toLowerCase()) ||
-                  item.status.toLowerCase().includes(search.toLowerCase()) ||
-                  item.latitude.toLowerCase().includes(search.toLowerCase()) ||
-                  item.longitude.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return item;
-                }
-              })
-              .map((item) => (
-                <ListTable
-                  key={item.id}
-                  nomer={item.id}
-                  nama={item.nama}
-                  kota={item.kota}
-                  provinsi={item.provinsi}
-                  tempat={item.jenis_faskes}
-                  status={item.status}
-                  lat={item.latitude}
-                  long={item.longitude}
-                />
-              ))}
+            <>
+              {data
+                .sort((item) => {
+                  if (kota === item) {
+                    return item;
+                  } else if (
+                    item.provinsi.toLowerCase().includes(kota.toLowerCase())
+                  ) {
+                    console.log(true);
+                    return item;
+                  } else {
+                    swal({
+                      button: false,
+                      title: "Not Found",
+                      text: "Provice in your select not available",
+                      icon: "warning",
+                    });
+                    return item;
+                  }
+                })
+                // eslint-disable-next-line array-callback-return
+                .filter((item) => {
+                  if (search === item) {
+                    return item;
+                  } else if (
+                    item.nama.toLowerCase().includes(search.toLowerCase()) ||
+                    item.kota.toLowerCase().includes(search.toLowerCase()) ||
+                    item.provinsi
+                      .toLowerCase()
+                      .includes(search.toLowerCase()) ||
+                    item.jenis_faskes
+                      .toLowerCase()
+                      .includes(search.toLowerCase()) ||
+                    item.status.toLowerCase().includes(search.toLowerCase()) ||
+                    item.latitude
+                      .toLowerCase()
+                      .includes(search.toLowerCase()) ||
+                    item.longitude.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return item;
+                  }
+                })
+                .map((item) => (
+                  <ListTable
+                    key={item.id}
+                    nomer={item.id}
+                    nama={item.nama}
+                    kota={item.kota}
+                    provinsi={item.provinsi}
+                    tempat={item.jenis_faskes}
+                    status={item.status}
+                    lat={item.latitude}
+                    long={item.longitude}
+                  />
+                ))}
+            </>
           </table>
         </div>
       </div>

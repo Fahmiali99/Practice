@@ -10,8 +10,8 @@ import Table from "../../../data/Table/Table";
 const index = () => {
   const [dataTable, setDataTable] = useState([]);
   const [dataProv, setDataProv] = useState([]);
+  const [city, setCity] = useState("");
 
-  //   console.log(dataProv);
   useEffect(() => {
     axios
       .get(URL_API_VAKSIN)
@@ -26,13 +26,19 @@ const index = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const selectData = (event) => {
+    setCity(event.target.value);
+  };
+
   return (
     <div className="w-screen h-screen">
       <h1 className="text-3xl text-black font-bold pt-10">Data Vaksin</h1>
-      <div className="row"></div>
-      <Prov prov={dataProv} />
+      {/* Select */}
+      <div onChange={selectData}>
+        <Prov prov={dataProv} />
+      </div>
 
-      <Table data={dataTable} />
+      <Table kota={city} data={dataTable} />
     </div>
   );
 };
